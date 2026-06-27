@@ -5,6 +5,8 @@ model profile {
     profilePhoto String?  @db.Text
     bio String?   @db.Text
     gender Gender?
+    createdAt DateTime @default(now())
+    updateAt DateTime @updatedAt
 }
 
 

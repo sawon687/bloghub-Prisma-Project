@@ -6,7 +6,7 @@ model users {
     password String  @db.VarChar(8)
     role Role  @default(USER)
     createdAt DateTime @default(now())
-    updatedAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
     profile profile? 
 }
 
