@@ -7,10 +7,12 @@ CREATE TYPE "Gender" AS ENUM ('MALE', 'FEMALE', 'OTHER');
 -- CreateTable
 CREATE TABLE "profile" (
     "id" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
+    "userId" UUID NOT NULL,
     "profilePhoto" TEXT,
     "bio" TEXT,
     "gender" "Gender",
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updateAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "profile_pkey" PRIMARY KEY ("id")
 );
@@ -20,10 +22,10 @@ CREATE TABLE "users" (
     "id" UUID NOT NULL,
     "name" VARCHAR(100) NOT NULL,
     "email" VARCHAR(100) NOT NULL,
-    "password" VARCHAR(8) NOT NULL,
+    "password" VARCHAR(20) NOT NULL,
     "role" "Role" NOT NULL DEFAULT 'USER',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );

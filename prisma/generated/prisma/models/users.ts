@@ -379,10 +379,6 @@ export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type usersCreateWithoutProfileInput = {
   id?: string
   name: string

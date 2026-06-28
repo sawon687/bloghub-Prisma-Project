@@ -30,6 +30,8 @@ export type ProfileMinAggregateOutputType = {
   profilePhoto: string | null
   bio: string | null
   gender: $Enums.Gender | null
+  createdAt: Date | null
+  updateAt: Date | null
 }
 
 export type ProfileMaxAggregateOutputType = {
@@ -38,6 +40,8 @@ export type ProfileMaxAggregateOutputType = {
   profilePhoto: string | null
   bio: string | null
   gender: $Enums.Gender | null
+  createdAt: Date | null
+  updateAt: Date | null
 }
 
 export type ProfileCountAggregateOutputType = {
@@ -46,6 +50,8 @@ export type ProfileCountAggregateOutputType = {
   profilePhoto: number
   bio: number
   gender: number
+  createdAt: number
+  updateAt: number
   _all: number
 }
 
@@ -56,6 +62,8 @@ export type ProfileMinAggregateInputType = {
   profilePhoto?: true
   bio?: true
   gender?: true
+  createdAt?: true
+  updateAt?: true
 }
 
 export type ProfileMaxAggregateInputType = {
@@ -64,6 +72,8 @@ export type ProfileMaxAggregateInputType = {
   profilePhoto?: true
   bio?: true
   gender?: true
+  createdAt?: true
+  updateAt?: true
 }
 
 export type ProfileCountAggregateInputType = {
@@ -72,6 +82,8 @@ export type ProfileCountAggregateInputType = {
   profilePhoto?: true
   bio?: true
   gender?: true
+  createdAt?: true
+  updateAt?: true
   _all?: true
 }
 
@@ -153,6 +165,8 @@ export type ProfileGroupByOutputType = {
   profilePhoto: string | null
   bio: string | null
   gender: $Enums.Gender | null
+  createdAt: Date
+  updateAt: Date
   _count: ProfileCountAggregateOutputType | null
   _min: ProfileMinAggregateOutputType | null
   _max: ProfileMaxAggregateOutputType | null
@@ -178,10 +192,12 @@ export type profileWhereInput = {
   OR?: Prisma.profileWhereInput[]
   NOT?: Prisma.profileWhereInput | Prisma.profileWhereInput[]
   id?: Prisma.StringFilter<"profile"> | string
-  userId?: Prisma.StringFilter<"profile"> | string
+  userId?: Prisma.UuidFilter<"profile"> | string
   profilePhoto?: Prisma.StringNullableFilter<"profile"> | string | null
   bio?: Prisma.StringNullableFilter<"profile"> | string | null
   gender?: Prisma.EnumGenderNullableFilter<"profile"> | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFilter<"profile"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"profile"> | Date | string
   user?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.usersWhereInput>
 }
 
@@ -191,6 +207,8 @@ export type profileOrderByWithRelationInput = {
   profilePhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
   user?: Prisma.usersOrderByWithRelationInput
 }
 
@@ -203,6 +221,8 @@ export type profileWhereUniqueInput = Prisma.AtLeast<{
   profilePhoto?: Prisma.StringNullableFilter<"profile"> | string | null
   bio?: Prisma.StringNullableFilter<"profile"> | string | null
   gender?: Prisma.EnumGenderNullableFilter<"profile"> | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFilter<"profile"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"profile"> | Date | string
   user?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.usersWhereInput>
 }, "id" | "userId">
 
@@ -212,6 +232,8 @@ export type profileOrderByWithAggregationInput = {
   profilePhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
   _count?: Prisma.profileCountOrderByAggregateInput
   _max?: Prisma.profileMaxOrderByAggregateInput
   _min?: Prisma.profileMinOrderByAggregateInput
@@ -222,10 +244,12 @@ export type profileScalarWhereWithAggregatesInput = {
   OR?: Prisma.profileScalarWhereWithAggregatesInput[]
   NOT?: Prisma.profileScalarWhereWithAggregatesInput | Prisma.profileScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"profile"> | string
-  userId?: Prisma.StringWithAggregatesFilter<"profile"> | string
+  userId?: Prisma.UuidWithAggregatesFilter<"profile"> | string
   profilePhoto?: Prisma.StringNullableWithAggregatesFilter<"profile"> | string | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"profile"> | string | null
   gender?: Prisma.EnumGenderNullableWithAggregatesFilter<"profile"> | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"profile"> | Date | string
+  updateAt?: Prisma.DateTimeWithAggregatesFilter<"profile"> | Date | string
 }
 
 export type profileCreateInput = {
@@ -233,6 +257,8 @@ export type profileCreateInput = {
   profilePhoto?: string | null
   bio?: string | null
   gender?: $Enums.Gender | null
+  createdAt?: Date | string
+  updateAt?: Date | string
   user: Prisma.usersCreateNestedOneWithoutProfileInput
 }
 
@@ -242,6 +268,8 @@ export type profileUncheckedCreateInput = {
   profilePhoto?: string | null
   bio?: string | null
   gender?: $Enums.Gender | null
+  createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type profileUpdateInput = {
@@ -249,6 +277,8 @@ export type profileUpdateInput = {
   profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.usersUpdateOneRequiredWithoutProfileNestedInput
 }
 
@@ -258,6 +288,8 @@ export type profileUncheckedUpdateInput = {
   profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type profileCreateManyInput = {
@@ -266,6 +298,8 @@ export type profileCreateManyInput = {
   profilePhoto?: string | null
   bio?: string | null
   gender?: $Enums.Gender | null
+  createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type profileUpdateManyMutationInput = {
@@ -273,6 +307,8 @@ export type profileUpdateManyMutationInput = {
   profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type profileUncheckedUpdateManyInput = {
@@ -281,6 +317,8 @@ export type profileUncheckedUpdateManyInput = {
   profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type profileCountOrderByAggregateInput = {
@@ -289,6 +327,8 @@ export type profileCountOrderByAggregateInput = {
   profilePhoto?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   gender?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type profileMaxOrderByAggregateInput = {
@@ -297,6 +337,8 @@ export type profileMaxOrderByAggregateInput = {
   profilePhoto?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   gender?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type profileMinOrderByAggregateInput = {
@@ -305,6 +347,8 @@ export type profileMinOrderByAggregateInput = {
   profilePhoto?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   gender?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type ProfileNullableScalarRelationFilter = {
@@ -322,6 +366,10 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type NullableEnumGenderFieldUpdateOperationsInput = {
   set?: $Enums.Gender | null
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
 export type profileCreateNestedOneWithoutUserInput = {
@@ -361,6 +409,8 @@ export type profileCreateWithoutUserInput = {
   profilePhoto?: string | null
   bio?: string | null
   gender?: $Enums.Gender | null
+  createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type profileUncheckedCreateWithoutUserInput = {
@@ -368,6 +418,8 @@ export type profileUncheckedCreateWithoutUserInput = {
   profilePhoto?: string | null
   bio?: string | null
   gender?: $Enums.Gender | null
+  createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type profileCreateOrConnectWithoutUserInput = {
@@ -391,6 +443,8 @@ export type profileUpdateWithoutUserInput = {
   profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type profileUncheckedUpdateWithoutUserInput = {
@@ -398,6 +452,8 @@ export type profileUncheckedUpdateWithoutUserInput = {
   profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -408,6 +464,8 @@ export type profileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   profilePhoto?: boolean
   bio?: boolean
   gender?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -417,6 +475,8 @@ export type profileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profilePhoto?: boolean
   bio?: boolean
   gender?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -426,6 +486,8 @@ export type profileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profilePhoto?: boolean
   bio?: boolean
   gender?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -435,9 +497,11 @@ export type profileSelectScalar = {
   profilePhoto?: boolean
   bio?: boolean
   gender?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
 }
 
-export type profileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profilePhoto" | "bio" | "gender", ExtArgs["result"]["profile"]>
+export type profileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profilePhoto" | "bio" | "gender" | "createdAt" | "updateAt", ExtArgs["result"]["profile"]>
 export type profileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
 }
@@ -459,6 +523,8 @@ export type $profilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     profilePhoto: string | null
     bio: string | null
     gender: $Enums.Gender | null
+    createdAt: Date
+    updateAt: Date
   }, ExtArgs["result"]["profile"]>
   composites: {}
 }
@@ -888,6 +954,8 @@ export interface profileFieldRefs {
   readonly profilePhoto: Prisma.FieldRef<"profile", 'String'>
   readonly bio: Prisma.FieldRef<"profile", 'String'>
   readonly gender: Prisma.FieldRef<"profile", 'Gender'>
+  readonly createdAt: Prisma.FieldRef<"profile", 'DateTime'>
+  readonly updateAt: Prisma.FieldRef<"profile", 'DateTime'>
 }
     
 

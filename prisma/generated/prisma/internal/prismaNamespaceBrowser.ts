@@ -76,7 +76,9 @@ export const ProfileScalarFieldEnum = {
   userId: 'userId',
   profilePhoto: 'profilePhoto',
   bio: 'bio',
-  gender: 'gender'
+  gender: 'gender',
+  createdAt: 'createdAt',
+  updateAt: 'updateAt'
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
