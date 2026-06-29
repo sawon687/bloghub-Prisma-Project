@@ -9,7 +9,21 @@ class AuthController extends baseController{
            const payload=req.body
          
         const {accessToken,refreshToken}=await authService.signindb(payload)
-        console.log(accessToken,refreshToken)
+
+        res.cookie('accessToken',accessToken,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"none",
+            maxAge:1000 * 60 * 60 * 24 // 24 hour or 1 day
+        })
+        res.cookie('refreshToken',refreshToken,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"none",
+            maxAge:1000 * 60 * 60 * 24 * 7// 24 hour or 7 day
+        })
+        
+     
            sendResponse(res,{success:true,status:httpstauts.OK,message:'user login is success fully',data:{accessToken,refreshToken}})
     })
 }

@@ -2,7 +2,7 @@
 import { prisma } from '../../lib/prisma'
 import bcrypt from "bcrypt"
 import { IloginUser } from './auth.interface'
-import { createToken } from '../../utils/jwt'
+import { jwtUtils } from '../../utils/jwt'
 import config from '../../config'
 import { SignOptions } from 'jsonwebtoken'
 class AuthService{
@@ -28,13 +28,13 @@ class AuthService{
          email: user.email,
          role: user.role,
        }
-      const accessToken = createToken(
+      const accessToken = jwtUtils.createToken(
          JwtPayload,
          config.accessSecret,
          { expiresIn: config.jwt_access_Expires } as SignOptions,
       )
-console.log(config)
-      const refreshToken=createToken(JwtPayload,config.refreshSecret,{expiresIn:config.jwt_refresh_Expires} as SignOptions)
+
+      const refreshToken=jwtUtils.createToken(JwtPayload,config.refreshSecret,{expiresIn:config.jwt_refresh_Expires} as SignOptions)
       return {accessToken,refreshToken}
     }
 }
